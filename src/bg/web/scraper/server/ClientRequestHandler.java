@@ -156,6 +156,11 @@ public class ClientRequestHandler implements Runnable {
             return;
         }
 
+        if (!url.contains("wiki")) {
+            out.println("Seems like this url is not from Wikipedia");
+            return;
+        }
+
         try {
             article = scraper.fetchWikipediaArticle(url);
         } catch (IOException e) {
