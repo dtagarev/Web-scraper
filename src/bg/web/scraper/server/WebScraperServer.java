@@ -1,5 +1,7 @@
 package bg.web.scraper.server;
 
+import bg.web.scraper.scraper.WebScraper;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,6 +12,8 @@ public class WebScraperServer {
 
     private static final int SERVER_PORT = 6789;
     private static final int MAX_EXECUTOR_THREADS = 10;
+
+    private static WebScraper scraper = new WebScraper();
 
     public static void main(String[] args) {
 
@@ -29,7 +33,7 @@ public class WebScraperServer {
 
                 System.out.println("Accepted connection request from client " + clientSocket.getInetAddress());
 
-                ClientRequestHandler clientHandler = new ClientRequestHandler(clientSocket);
+                ClientRequestHandler clientHandler = new ClientRequestHandler(clientSocket, scraper);
 
                 executor.execute(clientHandler);
             }

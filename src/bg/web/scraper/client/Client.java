@@ -23,7 +23,10 @@ public class Client {
             System.out.println("Connected to the server.");
 
             while (true) {
+                waitReply(reader);
+
                 System.out.print("Enter message: ");
+
                 String message = scanner.nextLine(); // read a line from the console
 
                 if ("quit".equals(message)) {
@@ -34,12 +37,26 @@ public class Client {
 
                 writer.println(message); // send the message to the server
 
-                String reply = reader.readLine(); // read the response from the server
-                System.out.println("The server replied <" + reply + ">");
             }
 
         } catch (IOException e) {
             throw new RuntimeException("There is a problem with the network communication", e);
+        }
+    }
+
+    private static void waitReply(BufferedReader reader) {
+        String reply = "\n";
+        while (!reply.equals("clear")) {
+            System.out.println(reply);
+            try {
+                reply  = reader.readLine();
+
+                if (reply.equals("quit")) {
+                    System.exit(0);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
