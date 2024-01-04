@@ -16,11 +16,15 @@ The project can scrape any random article form Wikipedia and fetch every hyperli
 ### Using the Web Scraper:
 Run the WebScraperServer class, then run one Client and start using the scraper through the menu on the screen. I open it trough IntelliJ.
 Other commands you can type as a client not visible in the menu. 
-4.1 "quit" - quits the current client
-4.1 "terminate" - quits the current client and the server
+- "quit" - quits the current client
+- "terminate" - quits the current client and the server
 
 If you want to save the scraped data to a file, when you scrape the data a menu will appear 
 on the bottom and there you can select to save the scraped data to a file.
+
+Example wiki pages that you can scrape:
+- https://en.wikipedia.org/wiki/Horse
+- https://en.wikipedia.org/wiki/Cat
 
 ## Hard Parts While Making:
 Implementing a communication between the client and server to efficiently exchange scraping requests and data proved challenging. The system needed to handle concurrent requests, data synchronization, and error handling to ensure a reliable scraping process.
