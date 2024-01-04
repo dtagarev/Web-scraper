@@ -53,7 +53,7 @@ public class WebScraper {
         // Extract the article content
         Element contentElement = document.getElementById("mw-content-text");
         if (contentElement != null) {
-            Elements paragraphs = contentElement.select("p");
+            Elements paragraphs = contentElement.select("h1,h2,h3,p");
             StringBuilder contentBuilder = new StringBuilder();
 
             for (Element paragraph : paragraphs) {
